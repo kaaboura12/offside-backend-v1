@@ -46,9 +46,18 @@ npm install
 Create a `.env` file in the root directory:
 
 ```bash
+# Required
 GROQ_API_KEY=your_groq_api_key_here
-PORT=3000  # Optional, defaults to 3000
+
+# Optional - Server Configuration
+PORT=3000  # Defaults to 3000
+BACKEND_URL=http://localhost:3000  # Backend URL (useful for mobile app configuration)
+
+# Optional - CORS Configuration
+ALLOWED_ORIGINS=*  # Comma-separated list of allowed origins, or * for all (default: *)
 ```
+
+**For mobile apps**: Set `BACKEND_URL` to your server's public IP/domain (e.g., `http://192.168.1.18:3000` or `https://api.yourdomain.com`). The mobile app will use this URL to connect to the WebSocket gateway.
 
 **Pro tip**: Don't commit your `.env` file. We're chaotic, not reckless.
 
