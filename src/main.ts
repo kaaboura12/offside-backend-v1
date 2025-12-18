@@ -5,16 +5,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
   // Enable CORS for REST API
-  const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || '*';
   app.enableCors({
-    origin: allowedOrigins,
-    credentials: true,
+    origin: '*',
+    methods: ['GET', 'POST'],
   });
   
-  const port = process.env.PORT ?? 3000;
-  await app.listen(port);
+  const port = process.env.PORT || 3000;
+  await app.listen(port, '0.0.0.0');
   
-  console.log(`🚀 Chaos Backend is running on port ${port}`);
-  console.log(`🔌 WebSocket gateway ready for connections`);
+  console.log(`Server running on port ${port}`);
 }
 bootstrap();
